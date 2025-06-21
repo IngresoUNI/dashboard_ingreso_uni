@@ -1,0 +1,82 @@
+<p-table 
+    #dt_usuarios_bot
+    [style]="{'margin-top':'15px'}"
+    [rows]="13"
+    [paginator]="true"
+    [value]="predicciones"   
+    [rowHover]="true"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[13,26,39]"
+    [loading]="loading"
+    styleClass="prime-table"
+    responsiveLayout="stack"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} filas">
+    <ng-template pTemplate="caption">
+        <button *ngIf="userStorage.tipoUsuario == 'E'" type="button"pButton label="Iniciar Nueva Predicción" icon="fas fa-plus" (click)="clickIniciarPrediccion()"></button>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>#</th>
+            <th>Horas Aptitud</th>
+            <th>Horas Matematica</th>
+            <th>Horas Fisica Quimica</th>
+            <th>Horas Total Semana</th>
+            <th>Año Nacimiento</th>
+            <th>Año Egreso Colegio</th>
+            <th>Año Postulacion</th>
+            <th>Especialidad</th>
+            <th>Modalidad</th>
+            <th>Predicción</th>
+        </tr>
+        <!-- <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr> -->
+    </ng-template>
+    <ng-template pTemplate="body" let-prediccion let-columns="columns" let-index="rowIndex">
+        <tr>
+            <td>{{index+1}}</td>
+            <td>{{prediccion.horasAptitud}}</td>
+            <td>{{prediccion.horasMatematica}}</td>
+            <td>{{prediccion.horasFisicaQuimica}}</td>
+            <td>{{prediccion.horasTotalSemana}}</td>
+            <td>{{prediccion.anioNacimiento}}</td>
+            <td>{{prediccion.anioEgresoColegio}}</td>
+            <td>{{prediccion.anioPostula}}</td>
+            <td>{{prediccion.especialidad}}</td>
+            <td>{{prediccion.modalidad}}</td>
+            <td>
+                <div [ngStyle]="{
+                    'margin-top': '15px',
+                    'padding': '10px',
+                    'border-radius': '5px',
+                    'background-color': prediccion.prediccion == 1 ? '#e0ffe0' : '#ffe0e0', 
+                    'border': prediccion.prediccion == 1 ? '1px solid #2ecc71' : '1px solid #e74c3c'
+                }" class="resultado-container">
+                    <strong>Probabilidad de ingreso:</strong> {{ prediccion.probabilidadIngreso }}%<br>
+                    <strong>Predicción:</strong> {{ prediccion.prediccion == 1 ? 'Sí ingresaría' : 'No ingresaría' }}<br>
+                    <strong>Nivel de riesgo:</strong> {{ prediccion.riesgo }}
+                </div>
+            </td>
+            <!-- <td>
+                <p-inputSwitch [ngModel]="usuario.estadoAuditoria === '1'"
+                (onChange)="onChangeActivo(usuario)"  />
+            </td>
+            <td>
+                <div class="flex">
+                    <button type="button" pButton icon="fas fa-edit" class="p-button-rounded p-button-text"></button>
+                    <button type="button" pButton icon="fas fa-trash-alt" class="p-button-rounded p-button-text"></button>
+                </div>
+                 
+            </td>-->
+        </tr>
+    </ng-template>
+</p-table>

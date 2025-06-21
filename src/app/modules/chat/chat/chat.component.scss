@@ -1,0 +1,170 @@
+.main-container{
+    height: 100%;
+    overflow:hidden;
+    
+}
+
+.chat-contacts{
+    height: 100%;
+    width:300px;
+    background-color: white;
+    margin-right: 5px;
+    .search-container{
+        width: 100%;
+        height: 70px;
+        padding: 15px;
+    }
+
+    .contacts-container{
+        width: 100%;
+        height: 100%;
+       
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    .chat-contacts{
+        width:150px;
+    }
+}
+
+
+.skeleton-container{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/////////////// TEMPLATE
+
+.discussions {
+    /* width: 100%;
+     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
+     overflow: hidden;
+     background-color: #87a3ec;
+     display: inline-block;*/
+     background-color: var(--primary-color);
+     overflow: hidden;
+     width: 280px;
+ 
+ 
+ }
+ 
+ .discussion {
+     width: 100%;
+     height: 90px;
+     background-color: #fafafa;
+     border-bottom: solid 1px #e0e0e0;
+     display: flex;
+     align-items: center;
+     cursor: pointer;
+    
+ }
+ 
+ 
+ div.discussion:hover{
+     background-color: #f0f0f0;
+ }
+
+ .message-active {
+    width: 98.5%;
+    height: 90px;
+    background-color: #fff;
+    border-bottom: solid 1px #b4b4b4;
+}
+
+.scroll-y {
+    height: 100%; /* Define la altura máxima del contenedor */
+    overflow-y: auto;  /* Habilita el scroll vertical */
+    overflow-x: hidden; /* Opcional: Oculta el scroll horizontal si no se necesita */
+  }
+
+ .desc-contact {
+    //height: 43px;
+    width: 75%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.discussions .discussion .name {
+    margin: 0 0 0 20px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 11pt;
+    color: #515151;
+}
+
+.discussions .discussion .message {
+    margin: 6px 0 0 20px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 9pt;
+    color: #515151;
+}
+
+.timer {
+    margin-left: 5%;
+    font-family: "Open Sans", sans-serif;
+    font-size: 9px;
+    width: auto;
+    padding: 3px 8px;
+    color: #bbb;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 15px;
+}
+
+
+.discussions .discussion .photo {
+    margin-left: 10px;
+    //display: block;
+    //width: 45px;
+    //height: 45px;
+    //background: #E6E7ED;
+}
+
+::ng-deep .contacts-container .p-scrollpanel .p-scrollpanel-bar {
+    background-color: #b4b4b4; 
+}
+
+
+.p-scrollpanel {
+    p {
+        padding: .5rem;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    &.custombar1 {
+        .p-scrollpanel-wrapper {
+            border-right: 9px solid var(--layer-1);
+        }
+
+        .p-scrollpanel-bar {
+            background-color: var(--primary-color);
+            opacity: 1;
+            transition: background-color .2s;
+
+            &:hover {
+                background-color: #007ad9;
+            }
+        }
+    }
+
+   
+}    
+
+
+
+
+::ng-deep .p-virtualscroller{
+    height: 100%;
+    .p-virtualscroller-content{
+        height: 100%;
+    }
+
+    .cdk-virtual-scroll-viewport .cdk-virtual-scroll-orientation-vertical{
+        height: 75vh;
+
+    }
+}
+ 

@@ -1,0 +1,64 @@
+<div class="div-sidebar" [ngClass]="{'sidebar-space' : sidebarExpanded}">
+
+</div>
+<nav class="main-menu" [ngClass]="{'expanded' : sidebarExpanded}">
+    <div class="top-sidebar">
+        <a href="/">
+            <div class="container-logo">
+                <img class="logo-sidebar" src="assets/img/predictuni_logo.png">
+                <p class="text-white font-bold"style="3.5rem">PredictUNI</p>
+            </div>
+        </a>
+        <div class="container-checkbox">
+            <a (click)="clickExpand()">
+                <div class="circle-button" [ngClass]="{'active' : sidebarExpanded}">
+                </div>
+            </a>
+        </div>
+    </div>
+    <ul>
+        <li *ngFor="let item of sidebarItems; index as i;">
+            <a *ngIf="item.visible==true" (click)="clickItem(item)" [ngClass]="{'activeicon' : !item.disabled}">
+                <div *ngIf="!item.disabled" class="container-circle-item">
+                    <div class="circle-item"></div>
+                </div>
+
+                <i class="{{item.icon}}"></i>
+                <span class="nav-text">
+                    {{item.label}}
+                    <i *ngIf="item.items" class="fas fa-chevron-down"
+                        style="float: right;  transition: transform 0.1s linear;"
+                        [ngClass]="{'rotate-arrow' : item.expanded}"></i>
+                </span>
+
+            </a>
+            <ul *ngIf="item.visible==true && item.items" class="sub-item-master" [ngClass]="item.expanded ? 'active' : 'inactive'">
+                <div style="margin-top: 1rem;">
+                    <div *ngFor="let subitem of item.items; index as i;" >
+                        <a *ngIf="subitem.visible == true" (click)="clickSubitem(subitem)">
+                            <li class="sub-item" [ngClass]="{'active-subitem' : !subitem.disabled}">
+    
+                                <i class="{{subitem.icon}}"
+                                    [ngStyle]="{'color':!subitem.disabled  ? '#7174E4': '#b8bac1'}"></i>
+                                <span class="nav-text">
+                                    {{subitem.label}}
+                                </span>
+                            </li>
+                        </a>
+                    </div>
+                </div>
+            </ul>
+        </li>
+    </ul>
+
+    <!--ul class="logout">
+        <li>
+            <a href="login">
+                <i class="fa fa-power-off fa-2x"></i>
+                <span class="nav-text">
+                    Salir
+                </span>
+            </a>
+        </li>
+    </ul-->
+</nav>  

@@ -1,0 +1,38 @@
+::ng-deep .p-menubar {
+    background: #003366;
+    margin: 0px;
+    border: none;
+    border-radius: 0px;
+    p-menubarsub {
+        display: none;
+        @media only screen and (max-width: 960px) {
+            display: flex;
+        }
+    }
+}
+
+.title-component-menubar {
+    margin: 0px;
+    color: #f2f4f6;
+    display: block;
+}
+
+.container-user {
+    margin: auto;
+    display: flex;
+}
+
+.desc-user {
+    margin: auto;
+    padding-right: 10px;
+}
+
+
+@media only screen and (max-width: 960px) {
+    .title-component-menubar {
+        display: none;
+    }
+    .desc-user{
+        display: none;
+    }
+}

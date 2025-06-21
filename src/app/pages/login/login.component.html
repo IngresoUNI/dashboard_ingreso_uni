@@ -1,0 +1,53 @@
+<div class="flex align-items-center justify-content-center min-h-screen ml-4 mr-4">
+  <div class="min-h-screen flex align-items-center justify-content-center" style="width: 700px;">
+    <div class="flex w-full max-w-4xl bg-white border-round-lg shadow-2 overflow-hidden">
+      <!-- Lado izquierdo con imagen y texto -->
+      <div class="hidden md:flex md:w-6 flex-column align-items-center justify-content-center p-4" style="background-color: #003366;">
+        <img src="assets/img/predictuni_logo.png" alt="Logo" style="width: 100px;" class="mb-4">
+        <h1 class="text-white text-3xl font-bold mb-2 text-center">Bienvenido a PredictUNI </h1>
+
+        <p style=" font-size: 1.1rem; line-height: 1.5rem; color: #ffffff; text-align: center; margin-bottom: 1.5rem; margin-top: 1.5rem; font-style: italic;">Estamos aquí para ayudarte a alcanzar tus metas. 💪</p>
+
+        <p class="text-lg text-center" style="color: rgb(184, 184, 184)">UNMSM - GRUPO 1</p>
+
+      </div>
+      <div class="flex flex-column w-full md:w-6 p-4">
+        <div class="md:hidden flex-column align-items-center justify-content-center p-4">
+          <div class="flex justify-content-center">
+            <img src="assets/img/predictuni_logo_invert.png" alt="Logo" style="width: 150px;" class="text-center">
+          </div>
+          <h1 class="text-center text-3xl font-bold mb-2" style="color: #003366;">Bienvenido a PredictUNI</h1>
+          <p class="text-blue-900 text-lg text-center">UNMSM - GRUPO 1</p>
+        </div>
+        <h2 class="text-2xl font-bold mb-3 mt-3 text-gray-800 text-center">Iniciar sesión</h2>
+        <p class="text-center mb-5 mt-3" style="color: #003366;  font-weight: 500; line-height: 1.6; text-align: center;">
+          <!-- Accede a tu cuenta para ver tu progreso y recibir recomendaciones personalizadas que te ayudarán a mejorar tu preparación. -->
+        </p>        
+
+        <div id="loginForm">
+          <div class="mb-4">
+            <div class="flex flex-column gap-2">
+              <label for="username">Nombre de usuario</label>
+              <input pInputText id="username" [(ngModel)]="username" (keyup.enter)="login()" />
+            </div>
+          </div>
+          <div class="mb-6">
+            <div class="flex flex-column gap-2">
+              <label for="password">Contraseña</label>
+              <p-inputGroup>
+                <input style="width: 100%;" [type]="showPassword ? 'text' : 'password'" pInputText id="password"
+                  [(ngModel)]="password" (keyup.enter)="login()" />
+                  <button type="button"pButton severity="secondary" [icon]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"  (click)="togglePasswordVisibility()"></button>
+              </p-inputGroup>
+            </div>
+          </div>
+          <p-button [style]="{'width': '100%', 'background-color': '#003366'}" label="Acceder a tu cuenta" size="large"  [loading]="loading" (click)="login()" />
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+

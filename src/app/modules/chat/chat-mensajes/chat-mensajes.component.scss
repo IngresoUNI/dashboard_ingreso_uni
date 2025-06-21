@@ -1,0 +1,127 @@
+.chat-container {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    .header-container {
+        width: 100%;
+        height: 50px;
+        background-color: white;
+        .avatar-container {
+            padding-left: 15px;
+        }
+    }
+
+    .messages-container {
+        width: 100%;
+        //height: calc(100% - 70px);
+        position: absolute;
+        background-color: lightblue;
+    }
+    .input-container {
+        width: 100%;
+        height: 60px;
+        position: absolute;
+        bottom: 0;
+        background-color: white;
+    }
+
+    .presentation {
+        height: 100%;
+        background-color: #ffffff;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    .chat-contacts {
+        width: 150px;
+    }
+}
+
+.squeleton-container {
+    padding: 40px;
+    padding-top: 10px;
+    //position: absolute;
+}
+
+/// template
+
+.messages-chat .message {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    margin-top: 5px;
+
+    &.response {
+        justify-content: flex-end;
+    }
+
+    &.cabecera {
+        justify-content: center;
+        .text {
+            background-color: rgb(201, 221, 227);
+            .estado {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                border-radius: 0.2rem;
+                color: white;
+                font-weight: bold;
+            }
+            
+        }
+    }
+    
+    .text {
+        margin: 0 40px;
+        background-color: white;
+        padding: 15px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        border-radius: 12px;
+    }
+}
+
+
+.time {
+    font-size: 10px;
+    color: rgb(146, 146, 146);
+    float: right;
+}
+
+.date {
+    font-size: 10px;
+    color: rgb(146, 146, 146);
+    float: left;
+}
+
+
+
+.response .text {
+    background-color: #cbe6c3 !important;
+}
+
+.icon-no-data {
+    font-size: 200px;
+}
+
+.center-no-data {
+    color: #003366;
+    font-size: 30px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.boton-telegram{
+    background-color: #0088cc;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+::ng-deep .p-virtualscroller .p-virtualscroller-content {
+    background-color: transparent;
+}

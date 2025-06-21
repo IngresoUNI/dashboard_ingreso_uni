@@ -1,0 +1,3 @@
+export class env {
+    static BACKEND_API_URL = "http://localhost:3000/api/v1"; //desarrollo
+}

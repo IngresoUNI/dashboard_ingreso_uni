@@ -1,0 +1,81 @@
+<p-table 
+    #dt_usuarios_bot
+    [style]="{'margin-top':'15px'}"
+    [rows]="13"
+    [paginator]="true"
+    [value]="usuariosBot"   
+    [rowHover]="true"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[13,26,39]"
+    [loading]="loading"
+    styleClass="prime-table"
+    responsiveLayout="stack"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} filas">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>#</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>ID Telegram</th>
+            <th>ID GLPI</th>
+            <th>Correo</th>
+            <th>Usuario AD</th>
+            <th>Activo</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>
+                <p-columnFilter 
+                    type="text" 
+                    field="nombre" 
+                    placeholder="Buscar por nombre"/>
+            </th>
+            <th>
+                <p-columnFilter 
+                    type="text" 
+                    field="apellidos" 
+                    placeholder="Buscar por apellido"/>
+            </th>
+            <th>
+                <p-columnFilter 
+                    type="text" 
+                    field="idUsuarioTelegram" 
+                    placeholder="Buscar por ID telegram"/>
+            </th>
+            <th>
+                <p-columnFilter 
+                    type="text" 
+                    field="idUsuarioSistemaGlpi" 
+                    placeholder="Buscar por ID GLPI"/>
+            </th>
+            <th>
+                <p-columnFilter 
+                    type="text" 
+                    field="correo" 
+                    placeholder="Buscar por Correo"/>
+            </th>
+            <th>
+                <p-columnFilter 
+                    type="text" 
+                    field="usuarioAD" 
+                    placeholder="Buscar por Usuario AD" />
+            </th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-usuario let-columns="columns" let-index="rowIndex">
+        <tr>
+            <td>{{index+1}}</td>
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.apellidos}}</td>
+            <td>{{usuario.idUsuarioTelegram}}</td>
+            <td>{{usuario.idUsuarioSistemaGlpi}}</td>
+            <td>{{usuario.correo}}</td>
+            <td>{{usuario.usuarioAD}}</td>
+            <td>
+                <p-inputSwitch [ngModel]="usuario.esEliminado === '0'"
+                (onChange)="onChangeActivo(usuario)"  />
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

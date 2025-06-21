@@ -1,0 +1,94 @@
+<p-table 
+    #dt_usuarios_bot
+    [style]="{'margin-top':'15px'}"
+    [rows]="13"
+    [paginator]="true"
+    [value]="estudiantes"   
+    [rowHover]="true"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[13,26,39]"
+    [loading]="loading"
+    styleClass="prime-table"
+    responsiveLayout="stack"
+    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} filas">
+    <ng-template pTemplate="caption">
+        <button type="button"pButton label="Agregar Nuevo Estudiante" icon="fas fa-plus" (click)="clickAgregarUsuarioSistema()"></button>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>#</th>
+            <th>Nombre Usuario</th>
+            <th>Nombres</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Año Egreso Colegio</th>
+            <th>Activo</th>
+            <th>Acciones</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>
+                <p-columnFilter 
+                    type="text" 
+                    field="nombreUsuario" />
+            </th>
+            <th>
+                <p-columnFilter 
+                    type="text" 
+                    field="nombre" />
+            </th>
+            <th>
+                <p-columnFilter 
+                    type="text" 
+                    field="apellidoPaterno" />
+            </th>
+            <th>
+                <p-columnFilter 
+                    type="text" 
+                    field="apellidoMaterno" />
+            </th>
+            <th>
+                <p-columnFilter 
+                    type="text" 
+                    field="correo" />
+            </th>
+            <th>
+                <p-columnFilter 
+                    type="text" 
+                    field="telefono" />
+            </th>
+            <th>
+                <p-columnFilter 
+                    type="text" 
+                    field="anioEgresoColegio" />
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-usuario let-columns="columns" let-index="rowIndex">
+        <tr>
+            <td>{{index+1}}</td>
+            <td>{{usuario.nombreUsuario}}</td>
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.apellidoPaterno}}</td>
+            <td>{{usuario.apellidoMaterno}}</td>
+            <td>{{usuario.correo}}</td>
+            <td>{{usuario.telefono}}</td>
+            <td>{{usuario.anioEgresoColegio}}</td>
+            <td>
+                <p-inputSwitch [ngModel]="usuario.estadoAuditoria === '1'"
+                (onChange)="onChangeActivo(usuario)"  />
+            </td>
+            <td>
+                <div class="flex">
+                    <button type="button" pButton icon="fas fa-edit" class="p-button-rounded p-button-text"></button>
+                    <button type="button" pButton icon="fas fa-trash-alt" class="p-button-rounded p-button-text"></button>
+                </div>
+                
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

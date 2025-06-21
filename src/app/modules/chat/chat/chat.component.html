@@ -1,0 +1,48 @@
+<div class="grid main-container " >
+    <div class="col-fixed chat-contacts" style="padding: 0px; ">
+        <!-- <div class="search-container" >
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input type="text" pInputText placeholder="Buscar"  />
+        </span>
+        </div> -->
+      <div class="contacts-container">
+
+        <!-- <div *ngIf="loading && conversacionCabeceras.length==0" class="flex align-items-center justify-content-center">
+          Cargando información...
+        </div> -->
+  
+        <div *ngIf="!loading && conversacionCabeceras.length==0" class="flex align-items-center justify-content-center">
+          No se encontraron conversaciones
+        </div>
+  
+        <div *ngIf="loading && conversacionCabeceras.length==0" >
+          <div class="grid"  *ngFor="let _ of [].constructor(15)">
+            <div class="col-12 skeleton-container">
+              <p-skeleton width="100%" height="6rem"></p-skeleton>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-y">
+          <div class="discussion gap-2" *ngFor="let conversacionCabecera of conversacionCabeceras" (click)="showConversacion(conversacionCabecera)">
+              <div class="ml-3">
+                <p-avatar value="4" pBadge class="photo" label="{{getAvatarLabel(conversacionCabecera.usuario ? conversacionCabecera.usuario.nombre : 'Desconocido')}}" size="large"
+                shape="circle" [style]="{'background-color':getAvatarColor(conversacionCabecera.usuario ? conversacionCabecera.usuario.nombre : 'Desconocido'), 'color': '#ffffff'}"></p-avatar> 
+              </div>
+              <div class="desc-contact ml-2">
+                <p class="name m-0 text-xl font-bold">{{conversacionCabecera.usuario ? conversacionCabecera.usuario.nombre : 'Desconocido' }}</p>
+                <div *ngIf="conversacionCabecera.conversaciones">
+                  <p class="message m-0">{{ conversacionCabecera.conversaciones[0].flagBot == '1' ? 'Bot' : 'User' }}:   {{  conversacionCabecera.conversaciones[0].flagTipoMensaje=='T' ? toEmoji(conversacionCabecera.conversaciones[0].mensaje || '') : '🟦 Opciones' }}</p>
+                </div>
+              </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+    <div class="col" style="padding: 0px;">
+      <app-chat-mensajes [conversacionCabecera]="conversacionCabeceraSelected"></app-chat-mensajes>
+    </div>
+  </div>
+  

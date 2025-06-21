@@ -1,0 +1,84 @@
+<div
+    style="display: flex; flex-direction: column; align-items: center; justify-content: center;  background-color: #f4f6f9; padding: 20px;">
+    <!-- Encabezado de bienvenida -->
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h1 style="color: #003366; font-size: 2.5rem; font-weight: bold; margin: 0;">Hola {{userStorage.nombre}}<br>Bienvenido a PredictUNI 🤲</h1>
+        <p style="font-size: 1.2rem; color: #555; margin-top: 10px;">La plataforma que te ayudará a optimizar tu
+            preparación hacia la UNI.</p>
+    </div>
+
+    <!-- Descripción atractiva -->
+    <div style="text-align: center; margin-bottom: 40px;">
+        <p style="font-size: 1.125rem; color: #333; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+            En PredictUNI, podrás predecir tus oportunidades de ingreso a la universidad utilizando herramientas
+            personalizadas. ¡Estamos aquí para acompañarte en cada paso de tu preparación!
+        </p>
+    </div>
+
+    <button
+            style="background-color: #003366; color: white; border: none; padding: 10px 20px; font-size: 1rem; border-radius: 5px; cursor: pointer; margin-top: 20px;"
+            (click)="onClickNuevaPrediccion()">¡Haz una nueva predicción!</button>
+
+    <!-- Sección visual: Cómo funciona -->
+    <div style="max-width: 700px; max-width: 1200px; margin-top: 40px;">
+        <h2 style="color: #003366; font-size: 2rem; text-align: center;">¿Cómo lo hacemos?</h2>
+
+        
+
+        <!-- Línea de Tiempo -->
+        <div style="width: 100%; flex-direction: column; margin-top: 40px;">
+            <!-- Paso 1 -->
+            <div style="display: flex; align-items: flex-start; margin-bottom: 30px;">
+                <div
+                    style="width: 50px; height: 50px; background-color: #003366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; ">
+                    1
+                </div>
+                <div style="width: auto; margin-left: 20px; text-align: left;">
+                    <h3 style="font-size: 1.25rem; color: #003366; font-weight: bold;">Recopilamos Datos Históricos</h3>
+                    <p style="font-size: 1rem; color: #777;">Utilizamos datos históricos de rendimiento académico para
+                        analizar patrones y entender el perfil general de los postulantes.</p>
+                </div>
+            </div>
+
+            <!-- Paso 2 -->
+            <div style="display: flex; align-items: flex-start; margin-bottom: 30px;">
+                <div
+                    style="width: 50px; height: 50px; background-color: #9C27B0; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; ">
+                    2
+                </div>
+                <div style="width: auto; margin-left: 20px; text-align: left;">
+                    <h3 style="font-size: 1.25rem; color: #9C27B0; font-weight: bold;">Creamos un Modelo Predictivo</h3>
+                    <p style="font-size: 1rem; color: #777; text-wrap: wrap;">Desarrollamos un modelo predictivo para estimar las probabilidades de ingreso a la UNI<br>basándonos en la información histórica disponible..</p>
+                </div>
+            </div>
+
+            <!-- Paso 3 -->
+            <div style="display: flex; align-items: flex-start; margin-bottom: 30px;">
+                <div
+                    style="width: 50px; height: 50px; background-color: #673AB7; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; ">
+                    3
+                </div>
+                <div style="margin-left: 20px; text-align: left;">
+                    <h3 style="font-size: 1.25rem; color: #673AB7; font-weight: bold;">Evaluamos tus Datos</h3>
+                    <p style="font-size: 1rem; color: #777;">Evaluamos los datos obtenidos para brindarte una predicción
+                        exacta basada en tu perfil.</p>
+                </div>
+            </div>
+
+            <!-- Paso 4 -->
+            <div style="display: flex; align-items: flex-start; margin-bottom: 30px;">
+                <div
+                    style="width: 50px; height: 50px; background-color: #FF9800; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; ">
+                    4
+                </div>
+                <div style="margin-left: 20px; text-align: left;">
+                    <h3 style="font-size: 1.25rem; color: #FF9800; font-weight: bold;">Te Damos el Resultado</h3>
+                    <p style="font-size: 1rem; color: #777;">Finalmente, te damos el resultado y las recomendaciones
+                        para optimizar tu preparación.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

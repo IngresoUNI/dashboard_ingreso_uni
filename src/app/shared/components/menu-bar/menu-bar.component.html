@@ -1,0 +1,14 @@
+<p-menubar [model]="menubarItems">
+    <ng-template pTemplate="start">
+        <h3 class="title-component-menubar">{{titulo}}</h3>
+    </ng-template>
+    <div class="container-user">
+        <div class="desc-user">
+            <p *ngIf="userStorage"  style="color: #f2f4f6; text-align: right;"><b>{{userStorage.nombre}} {{userStorage.apellidoPaterno}}</b> | {{userStorage.tipoUsuario === 'E' ? 'Estudiante' : 'Administrativo Colegio'}}</p>
+            <p *ngIf="userStorage"  style="color: #f2f4f6; text-align: right;">{{userStorage.colegio.nombre}}</p>
+        </div>
+        <p-button [style]="{'height': '35px', 'width': '35px', 'margin': '0'}" severity="secondary" [rounded]="true" icon="fa fa-user" size="large" (click)="menuuser.toggle($event)" />
+        <p-menu #menuuser [popup]="true" [model]="userMenuItems"></p-menu>
+    </div>
+
+</p-menubar>

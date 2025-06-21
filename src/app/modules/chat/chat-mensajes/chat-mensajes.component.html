@@ -1,0 +1,102 @@
+<div class="col chat-container " style="padding: 0px;">
+
+    <div class="presentation" *ngIf="!conversacionCabecera">
+        <div class="center-no-data">
+            <div style="text-align: center;">
+                <i class="fa-brands fa-telegram icon-no-data" style="color: #d3d3d3;"></i>
+            </div>
+            <div style="padding-top: 20px; text-align: center; color: #d3d3d3;">Seleccione una conversación para ver sus mensajes</div>
+        </div>
+    </div>
+
+    <div *ngIf="conversacionCabecera">
+        <div class="header-container mt-2">
+            <div class="grid">
+                <div  class="col-fixed avatar-container flex align-items-center ">
+                    <p-avatar value="4" pBadge class="photo" label="{{getAvatarLabel(conversacionCabecera.usuario ? conversacionCabecera.usuario.nombre : 'Desconocido')}}" size="large" shape="circle"
+                        [style]="{'background-color':getAvatarColor(conversacionCabecera.usuario ? conversacionCabecera.usuario.nombre : 'Desconocido'), 'color': '#ffffff'}"></p-avatar>
+                </div>
+                <div class="col flex align-items-center justify-content-left m-0">
+                    <div class="flex flex-column w-full">
+                        <h3 class="m-0 text-2xl">{{ conversacionCabecera.usuario ? conversacionCabecera.usuario.nombre + ' ' + conversacionCabecera.usuario.apellidos : 'Desconocido'}}</h3>
+                        <div *ngIf="conversacionCabecera.usuario" class="flex gap-3" style="color: rgb(106, 106, 106);">
+                            <div *ngIf="conversacionCabecera.usuario.nroDoc"><b>Documento:</b> {{conversacionCabecera.usuario.nroDoc}}</div>
+                            <div *ngIf="conversacionCabecera.usuario.telefono"><b>Teléfono:</b> {{conversacionCabecera.usuario.telefono}}</div>
+                            <div *ngIf="conversacionCabecera.usuario.idUsuarioSistemaGlpi"><b>GLPI:</b> {{conversacionCabecera.usuario.idUsuarioSistemaGlpi}}</div>
+                            <div *ngIf="conversacionCabecera.usuario.usuarioAD"><b>AD:</b> {{conversacionCabecera.usuario.usuarioAD}}</div>
+                            <div *ngIf="conversacionCabecera.usuario.correo"><b>Correo:</b> {{conversacionCabecera.usuario.correo}}</div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="messages-container ">
+            <div class="messages-chat">
+                <div *ngIf="loading" class="squeleton-container">
+                    <p-skeleton width="30%" height="4rem" [style]="{'margin-bottom':'25px'}"></p-skeleton>
+                    <p-skeleton width="30%" height="4rem" [style]="{'margin-bottom':'25px','margin-left':'auto'}"></p-skeleton>
+                    <p-skeleton width="25%" height="4rem" [style]="{'margin-bottom':'25px'}"></p-skeleton>
+                    <p-skeleton width="34%" height="4rem" [style]="{'margin-bottom':'25px','margin-left':'auto'}"></p-skeleton> <p-skeleton width="30%" height="4rem" [style]="{'margin-bottom':'25px'}"></p-skeleton>
+                </div>
+
+                <div *ngIf="!loading" #chatscroll style="height: calc(100vh - 150px); overflow: auto">
+                    <div *ngIf="conversacionCabeceras?.length  == 0" class="center-no-data">
+                        <div style="text-align: center;">
+                            <i class="fa-solid fa-face-frown icon-no-data" style="color: #6c6c6c;"></i>
+                        </div>
+                        <div style="padding-top: 20px;text-align: center; color: #6c6c6c;">No se encontraron mensajes</div>
+                    </div>
+                    <div *ngFor="let cc of conversacionCabeceras">
+                        <div class="message cabecera">
+                            <div class="text">
+                                <div class="flex flex-column">
+                                    <div><b>Hash:</b> {{cc.hash}}</div>
+                                    <div><b>Asunto:</b> {{cc.asunto}}</div>
+                                    <div><b>Descripcion:</b> {{cc.descripcion}}</div>
+                                    <div><b>Número Ticket:</b> {{cc.idTicket}}</div>
+                                    <div><b>Tipo:</b> {{getLabelTipoConversacionCabecera(cc.tipo||'')}}</div>
+                                    <div><b>Categoria:</b> {{getLabelCategoriaConversacionCabecera(cc.categoria || '')}}</div>
+                                    <div><b>Estado: </b> <span class="estado" [ngStyle]="{'background-color': getColorEstadoConversacionCabecera(cc.estado || '')}">{{getLabelEstadoConversacionCabecera(cc.estado||'')}}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngFor="let conversacion of cc.conversaciones">
+                            <div class="message " [class.response]="conversacion.flagBot == '1'">
+                                <div class="flex flex-column text">
+                                    <span class="date">{{conversacion.fechaCreacionAuditoria | date}}</span>
+                                    <p *ngIf="conversacion.flagTipoMensaje == 'T'" class="m-0 mt-1">{{toEmoji(conversacion.mensaje || '')}}</p>
+                                    <div *ngIf="conversacion.flagTipoMensaje == 'B'" class="m-0 mt-1">
+                                        <div *ngIf="canBeObject(conversacion.mensaje||'')">
+                                            <div class="grid" *ngFor="let btn of toObject(conversacion.mensaje||'')">
+                                                <div class="boton-telegram">{{btn[0].text}}</div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="!canBeObject(conversacion.mensaje||'')">
+                                            <div class="boton-telegram">{{conversacion.mensaje}}</div>
+                                        </div>
+                                    </div>
+                                    <span class="time text-right">{{conversacion.fechaCreacionAuditoria | date: 'shortTime'}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+               </div>
+
+            
+            </div>
+
+        </div>
+        <!-- <div class="input-container box shadow-4">
+            <div class="col-12 md:col-12">
+                <div class="p-inputgroup">
+                    <input type="text" pInputText placeholder="Escribe un mensaje">
+                    <button type="button" pButton pRipple icon="fa fa-arrow-right" styleClass="p-button-warn"></button>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+</div>

@@ -1,0 +1,57 @@
+<div class="m-3 gap-2">
+
+
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="usuarioAD">Nombre Usuario</label>
+        <input pInputText id="usuarioAD" [(ngModel)]="estudiante.nombreUsuario" (keyup.enter)="onClickRegistrar()" />
+    </div>
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="nombre">Nombre</label>
+        <input pInputText id="nombre" [(ngModel)]="estudiante.nombre" (keyup.enter)="onClickRegistrar()"/>
+    </div>
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="apellidoPaterno">Apellido Paterno</label>
+        <input pInputText id="apellidoPaterno" [(ngModel)]="estudiante.apellidoPaterno" (keyup.enter)="onClickRegistrar()" />
+    </div>
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="apellidoMaterno">Apellido Materno</label>
+        <input pInputText id="apellidoMaterno" [(ngModel)]="estudiante.apellidoMaterno" (keyup.enter)="onClickRegistrar()" />
+    </div>
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="sexo">Sexo</label>
+        <p-dropdown 
+                id="sexo"
+                [style]="{'width':'100%'}"
+                [options]="listaSexos" 
+                [(ngModel)]="estudiante.sexo"                 
+                optionLabel="label" 
+                optionValue="value"
+                appendTo="body"
+                placeholder="Seleccione una opción">
+              </p-dropdown>
+    </div>
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="estudiante.correo">Correo</label>
+        <input pInputText id="estudiante.correo" [(ngModel)]="estudiante.correo" (keyup.enter)="onClickRegistrar()" />
+    </div>
+    
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="telefono">Telefono</label>
+        <input pInputText type="number" id="telefono" [(ngModel)]="estudiante.telefono" (keyup.enter)="onClickRegistrar()" />
+    </div>
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="fechaNacimiento">Fecha de Nacimimiento</label>
+        <input pInputText type="date" id="fechaNacimiento" [(ngModel)]="estudiante.fechaNacimiento" (keyup.enter)="onClickRegistrar()" />
+    </div>
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="anioEgresoColegio">Año Egreso Colegio</label>
+        <input pInputText type="number" id="anioEgresoColegio" [(ngModel)]="estudiante.anioEgresoColegio" (keyup.enter)="onClickRegistrar()" />
+    </div>
+
+    <p class="mb-3" style="color: rgb(255, 76, 76); font-weight: bold; text-align: center;" *ngIf="errorMessage">{{errorMessage}}</p>
+
+    
+    <button type="button" pButton  [style]="{'width': '100%'}" label="Registrar" [loading]="loading" (click)="onClickRegistrar()"></button>
+
+
+</div>

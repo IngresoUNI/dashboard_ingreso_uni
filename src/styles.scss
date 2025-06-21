@@ -1,0 +1,71 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "primeng/resources/themes/tailwind-light/theme.css";
+@import "primeng/resources/primeng.css";
+
+
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  margin: 0;
+  //background-color: rgb(26, 26, 26);
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  background-color: #f2f4f6;
+}
+
+h1,
+h2,
+h3,
+p {
+  color: rgb(39, 39, 39);
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #c2c2c2 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #c2c2c2;
+  border-radius: 10px;
+}
+
+.title-component {
+  display: none;
+}
+
+@media only screen and (max-width: 960px) {
+  .title-component {
+    display: block;
+  }
+}
+
+
+
+.clickeable{
+  cursor: pointer;
+}
+
+a.clickeable:hover{
+  text-decoration: underline;
+}
+
+
+ button.p-button.p-button-icon-only.table-button{
+  width: 35px;
+  height: 35px;
+}
+

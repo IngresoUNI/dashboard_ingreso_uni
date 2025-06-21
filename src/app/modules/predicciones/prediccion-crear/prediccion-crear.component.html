@@ -1,0 +1,154 @@
+<div class="m-3 gap-2">
+
+
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="colegio">Colegio</label>
+        <input pInputText id="colegio" disabled [ngModel]="prediccion.usuario.colegio.nombre" (keyup.enter)="onClickRegistrar()" disabled/>
+    </div>
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="departamento">Departamento Colegio</label>
+        <p-dropdown 
+                id="departamento"
+                [style]="{'width':'100%'}"
+                [options]="parametros.departamentos" 
+                [(ngModel)]="queryParam.colegioDepartamento"                 
+                optionLabel="label" 
+                optionValue="value"
+                appendTo="body"
+                placeholder="Seleccione una opción">
+              </p-dropdown>
+    </div>
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="provincia">Provincia Colegio</label>
+        <p-dropdown 
+                id="provincia"
+                [style]="{'width':'100%'}"
+                [options]="parametros.provincias" 
+                [(ngModel)]="queryParam.colegioProvincia"                 
+                optionLabel="label" 
+                optionValue="value"
+                appendTo="body"
+                placeholder="Seleccione una opción">
+              </p-dropdown>
+    </div>
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="distrito">Distrito Colegio</label>
+        <p-dropdown 
+                id="distrito"
+                [style]="{'width':'100%'}"
+                [options]="parametros.distritos" 
+                [(ngModel)]="queryParam.colegioDistrito"                 
+                optionLabel="label" 
+                optionValue="value"
+                appendTo="body"
+                placeholder="Seleccione una opción">
+              </p-dropdown>
+    </div>
+
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="distrito">Especialidad</label>
+        <p-dropdown 
+                id="distrito"
+                [style]="{'width':'100%'}"
+                [options]="parametros.especialidades" 
+                [(ngModel)]="prediccion.especialidad"                 
+                optionLabel="label" 
+                optionValue="value"
+                appendTo="body"
+                placeholder="Seleccione una opción">
+              </p-dropdown>
+    </div>
+
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="distrito">Modalidad</label>
+        <p-dropdown 
+                id="distrito"
+                [style]="{'width':'100%'}"
+                [options]="parametros.modalidades" 
+                [(ngModel)]="prediccion.modalidad"                 
+                optionLabel="label" 
+                optionValue="value"
+                appendTo="body"
+                placeholder="Seleccione una opción">
+              </p-dropdown>
+    </div>
+
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="sexo">Sexo</label>
+        <p-dropdown 
+                id="sexo"
+                [style]="{'width':'100%'}"
+                [options]="sexos" 
+                [(ngModel)]="prediccion.usuario.sexo"                 
+                optionLabel="label" 
+                optionValue="value"
+                appendTo="body"
+                [disabled]="true"
+                placeholder="Seleccione una opción">
+              </p-dropdown>
+    </div>
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="correo">Correo</label>
+        <input pInputText id="correo" [(ngModel)]="prediccion.usuario.correo" (keyup.enter)="onClickRegistrar()" disabled/>
+    </div>
+    
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="telefono">Telefono</label>
+        <input pInputText type="number" id="telefono" [(ngModel)]="prediccion.usuario.telefono" (keyup.enter)="onClickRegistrar()" disabled />
+    </div>
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="fechaNacimiento">Año de Nacimimiento</label>
+        
+        <input pInputText type="text" id="fechaNacimiento" 
+           [value]="formatDate(prediccion.usuario.fechaNacimiento)" 
+           (keyup.enter)="onClickRegistrar()" disabled/>
+
+    </div>
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="anioEgresoColegio">Año Egreso Colegio</label>
+        <input pInputText type="number" id="anioEgresoColegio" [(ngModel)]="prediccion.usuario.anioEgresoColegio" (keyup.enter)="onClickRegistrar()" disabled />
+    </div>
+
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="anioPostula">Año Postulacion</label>
+        <input pInputText type="number" id="anioPostula" [(ngModel)]="prediccion.anioPostula" (keyup.enter)="onClickRegistrar()" />
+    </div>
+
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="horasAptitud">Horas Estudio Aptitud</label>
+        <input pInputText type="number" id="horasAptitud" [(ngModel)]="prediccion.horasAptitud" (keyup.enter)="onClickRegistrar()" />
+    </div>
+
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="horasMatematica">Horas Estudio Matematica</label>
+        <input pInputText type="number" id="horasMatematica" [(ngModel)]="prediccion.horasMatematica" (keyup.enter)="onClickRegistrar()" />
+    </div>
+
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="horasFisicaQuimica">Horas Estudio Fisica y Quimica</label>
+        <input pInputText type="number" id="horasFisicaQuimica" [(ngModel)]="prediccion.horasFisicaQuimica" (keyup.enter)="onClickRegistrar()" />
+    </div>
+
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="horasTotalSemana">Total Horas Semana</label>
+        <input pInputText type="number" id="horasTotalSemana" [(ngModel)]="prediccion.horasTotalSemana" (keyup.enter)="onClickRegistrar()" />
+    </div>
+
+    <p class="mb-3" style="color: rgb(255, 76, 76); font-weight: bold; text-align: center;" *ngIf="errorMessage">{{errorMessage}}</p>
+
+    
+    <button type="button" pButton  [style]="{'width': '100%'}" label="Predecir" [loading]="loading" (click)="onClickRegistrar()"></button>
+
+    <div *ngIf="respuestaPrediccion !== null" [ngStyle]="{
+        'margin-top': '15px',
+        'padding': '10px',
+        'border-radius': '5px',
+        'background-color': respuestaPrediccion.prediccion == 1 ? '#e0ffe0' : '#ffe0e0', 
+        'border': respuestaPrediccion.prediccion == 1 ? '1px solid #2ecc71' : '1px solid #e74c3c'
+    }" class="resultado-container">
+        <strong>Probabilidad de ingreso:</strong> {{ respuestaPrediccion.probabilidad_ingreso }}%<br>
+        <strong>Predicción:</strong> {{ respuestaPrediccion.prediccion == 1 ? 'Sí ingresaría' : 'No ingresaría' }}<br>
+        <strong>Nivel de riesgo:</strong> {{ respuestaPrediccion.riesgo }}
+    </div>
+
+</div>
