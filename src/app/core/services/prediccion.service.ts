@@ -13,7 +13,7 @@ export class PrediccionService {
 
     private url: string = `${env.BACKEND_API_URL}/predicciones`
 
-    private  apiython = 'http://localhost:8000';
+    private  apiython = 'http://146.190.113.84:8000';
 
     constructor(
         private http: HttpClient,
