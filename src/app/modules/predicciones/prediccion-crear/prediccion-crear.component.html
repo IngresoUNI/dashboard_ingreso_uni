@@ -1,5 +1,11 @@
 <div class="m-3 gap-2">
 
+    <div>
+<p *ngIf="loading" style="text-align: center; background-color: #fff3cd; color: #856404; padding: 10px; border: 1px solid #ffeeba; border-radius: 4px;">
+  ⚠️ Cargando parámetros, por favor espere...
+</p>
+
+    </div>
 
     <div class="flex flex-column gap-2 mb-3">
         <label for="colegio">Colegio</label>
@@ -74,6 +80,20 @@
     </div>
 
     <div class="flex flex-column gap-2 mb-3">
+        <label for="provincia">Domicilio Departamento</label>
+        <p-dropdown 
+                id="provincia"
+                [style]="{'width':'100%'}"
+                [options]="parametros.domiciliosDepartamentos" 
+                [(ngModel)]="queryParam.domicilioDepartamento"                 
+                optionLabel="label" 
+                optionValue="value"
+                appendTo="body"
+                placeholder="Seleccione una opción">
+              </p-dropdown>
+    </div>
+
+    <div class="flex flex-column gap-2 mb-3">
         <label for="sexo">Sexo</label>
         <p-dropdown 
                 id="sexo"
@@ -134,6 +154,11 @@
         <input pInputText type="number" id="horasTotalSemana" [(ngModel)]="prediccion.horasTotalSemana" (keyup.enter)="onClickRegistrar()" />
     </div>
 
+    <div class="flex flex-column gap-2 mb-3">
+        <label for="calificacion">Calificacion</label>
+        <input pInputText type="number" id="calificacion" [(ngModel)]="prediccion.calificacion" (keyup.enter)="onClickRegistrar()" />
+    </div>
+
     <p class="mb-3" style="color: rgb(255, 76, 76); font-weight: bold; text-align: center;" *ngIf="errorMessage">{{errorMessage}}</p>
 
     
@@ -143,12 +168,12 @@
         'margin-top': '15px',
         'padding': '10px',
         'border-radius': '5px',
-        'background-color': respuestaPrediccion.prediccion == 1 ? '#e0ffe0' : '#ffe0e0', 
-        'border': respuestaPrediccion.prediccion == 1 ? '1px solid #2ecc71' : '1px solid #e74c3c'
+        'background-color': respuestaPrediccion.prediccion !== 'No' ? '#e0ffe0' : '#ffe0e0', 
+        'border': respuestaPrediccion.prediccion !== 'No' ? '1px solid #2ecc71' : '1px solid #e74c3c'
     }" class="resultado-container">
-        <strong>Probabilidad de ingreso:</strong> {{ respuestaPrediccion.probabilidad_ingreso }}%<br>
-        <strong>Predicción:</strong> {{ respuestaPrediccion.prediccion == 1 ? 'Sí ingresaría' : 'No ingresaría' }}<br>
-        <strong>Nivel de riesgo:</strong> {{ respuestaPrediccion.riesgo }}
+        <!--strong>Probabilidad de ingreso:</strong> {{ respuestaPrediccion.probabilidad_ingreso }}%<br-->
+        <strong>Predicción:</strong> {{ respuestaPrediccion.prediccion !== 'No' ? 'Sí ingresaría' : 'No ingresaría' }}<br>
+        <!--strong>Nivel de riesgo:</strong> {{ respuestaPrediccion.riesgo }} -->
     </div>
 
 </div>

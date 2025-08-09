@@ -45,6 +45,7 @@ export class PrediccionCrearComponent implements OnInit {
     distritos: [],
     especialidades: [],
     modalidades: [],
+    domiciliosDepartamentos: [],
   }
 
   respuestaPrediccion: any = null;
@@ -65,7 +66,8 @@ export class PrediccionCrearComponent implements OnInit {
     this.queryParam = {
       colegioDistrito: '',
       colegioProvincia: '',
-      colegioDepartamento: ''
+      colegioDepartamento: '',
+      domicilioDepartamento:  '',
     }
 
     this.prediccion = {
@@ -78,6 +80,7 @@ export class PrediccionCrearComponent implements OnInit {
       horasFisicaQuimica: '',
       horasAptitud: '',
       horasTotalSemana: '',
+      calificacion: '',
     };
 
     this.loading = true;
@@ -89,6 +92,7 @@ export class PrediccionCrearComponent implements OnInit {
           distritos: data.COLEGIO_DIST.map((item:string) => ({label: item, value: item})),
           especialidades: data.ESPECIALIDAD.map((item:string) => ({label: item, value: item})),
           modalidades: data.MODALIDAD.map((item:string) => ({label: item, value: item})),
+          domiciliosDepartamentos: data.DOMICILIO_DEPA.map((item:string) => ({label: item, value: item})),
         }
 
     this.loading = false;
@@ -123,16 +127,20 @@ export class PrediccionCrearComponent implements OnInit {
             COLEGIO_DIST: `${this.queryParam.colegioDistrito}`,
             COLEGIO_PROV: `${this.queryParam.colegioProvincia}`,
             COLEGIO_DEPA: `${this.queryParam.colegioDepartamento}`,
+            DOMICILIO_DEPA: `${this.queryParam.domicilioDepartamento}`,
             ESPECIALIDAD: `${this.prediccion.especialidad}`,
             MODALIDAD: `${this.prediccion.modalidad}`,
             SEXO: `${this.prediccion.usuario.sexo === 'M' ? 'MASCULINO' : 'FEMENINO'}`,
-            COLEGIO_ANIO_EGRESO: `${this.prediccion.usuario.anioEgresoColegio}`,
-            ANIO_POSTULA: `${this.prediccion.anioPostula}`,
-            ANIO_NACIMIENTO: `${this.prediccion.anioNacimiento}`,
-            h_e_Matemática: `${this.prediccion.horasMatematica}`,
-            h_e_fisica_quimica: `${this.prediccion.horasFisicaQuimica}`,
-            h_e_Aptitud: `${this.prediccion.horasAptitud}`,
-            h_total_semana: `${this.prediccion.horasTotalSemana}`,
+
+           COLEGIO_ANIO_EGRESO: parseInt(this.prediccion.usuario.anioEgresoColegio),
+          ANIO_POSTULA: parseInt(this.prediccion.anioPostula),
+          ANIO_NACIMIENTO: parseInt(this.prediccion.anioNacimiento),
+
+          h_e_Matemática: parseFloat(this.prediccion.horasMatematica),
+          h_e_fisica_quimica: parseFloat(this.prediccion.horasFisicaQuimica),
+          h_e_Aptitud: parseFloat(this.prediccion.horasAptitud),
+          h_total_semana: parseInt(this.prediccion.horasTotalSemana),
+          calificacion: parseFloat(this.prediccion.calificacion),
         }
 
     console.log('payloadApi', payloadApi);
